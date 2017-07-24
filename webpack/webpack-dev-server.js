@@ -1,12 +1,15 @@
-/* eslint-disable */
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
+
 const config = require('./webpack.config')
 
-const ip = process.env.IP || '0.0.0.0'
 const port = (+process.env.PORT + 1) || 3001
+const ip = process.env.IP || '0.0.0.0'
 
-new WebpackDevServer(webpack(config), {
+const compiler = webpack(config)
+
+/*  Creates a server to serve static assets */
+const server = new WebpackDevServer(compiler, {
   publicPath: config.output.publicPath,
   host: ip,
   stats: false,
@@ -16,10 +19,6 @@ new WebpackDevServer(webpack(config), {
   headers: {
     'Access-Control-Allow-Origin': '*',
   }
-}).listen(port, ip, function (err) {
-  if (err) {
-    return console.log(err)
-  }
-
-  console.log(`Listening at http://${ip}:${port}`)
 })
+
+server.listen(port, ip, (err) => console.log(err ? err : `Listening at http://${ip}:${port}`))

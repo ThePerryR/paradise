@@ -57,7 +57,6 @@ const config = {
 }
 
 if (DEBUG) {
-  console.log('--------DEBUG--------')
   config.entry.app.unshift(`webpack-dev-server/client?http://${ip}:${port}/`)
 
   config.plugins = config.plugins.concat([
