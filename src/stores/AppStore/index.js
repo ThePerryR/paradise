@@ -14,7 +14,6 @@ class AppStore {
   @observable currentUserId = null
 
   constructor (initialData = {}, blueprints = {}, TransportLayer) {
-    console.log('yyyy', blueprints)
     this.csrf = initialData.csrf
     this.userHash = initialData.user_hash
     this.currentUserId = initialData.currentUserId && initialData.currentUserId.toString()

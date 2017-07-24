@@ -1,3 +1,4 @@
+console.log('xoxoxoxoxoxox')
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, browserHistory } from 'react-router'
@@ -5,7 +6,7 @@ import { Router, browserHistory } from 'react-router'
 import routes from './routes'
 import AppStore from './stores/AppStore'
 
-const store = new AppStore(JSON.parse(document.getElementById('is').innerHTML.replace(/&quot;/g, '"')))
+const store = new AppStore()
 
 const mountNode = document.getElementById('app')
 
