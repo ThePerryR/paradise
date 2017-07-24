@@ -1,0 +1,36 @@
+{
+  "name": "TeachOK",
+  "version": "0.0.10",
+  "repository": "https://github.com/ThePerryR/alge.git",
+  "author": "perry@teachok.com",
+  "private": true,
+  "main": "src",
+  "license": "MIT",
+  "scripts": {
+    "start": "node .",
+    "lint": "eslint src",
+    "coverage": "npm run test --coverage",
+    "test": "cross-env NODE_ENV=test jest",
+    "dev": "concurrently --kill-others \"nodemon src --watch\" \"node webpack/webpack-dev-server\"",
+    "storybook": "start-storybook -p 6006 -s src/public -c src/stories",
+    "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
+    "build:copy": "copyfiles -u 1 src/public/* src/public/**/* src/public/**/**/* dist",
+    "prebuild": "npm run build:clean && npm run build:copy",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config",
+    "heroku-postbuild": "npm run build"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/src/components"
+    ],
+    "moduleDirectories": [
+      "src",
+      "node_modules"
+    ],
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "webpack": "^3.3.0"
+  },
+  "devDependencies": {}
+}
