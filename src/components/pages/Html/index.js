@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 const Html = ({assets}) => {
   const helmet = Helmet.rewind()
   const attrs = helmet.htmlAttributes.toComponent()
+  console.log(assets.javascript)
   return (
     <html {...attrs}>
     <head>
@@ -15,7 +16,6 @@ const Html = ({assets}) => {
     </head>
     <body>
     <main id="app"/>
-    <script id="is" type="application/json">{state}</script>
     {Object.keys(assets.javascript).reverse().map((key) =>
       <script key={key} src={assets.javascript[key]}/>
     )}

@@ -9,5 +9,3 @@ global.webpackIsomorphicTools = new WebpackIsomorphicTools(webpackIsomorphicTool
   .server('./', () => {
     require('./server')
   })
-
-console.log(123)
