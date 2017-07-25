@@ -1,5 +1,3 @@
-import { observable } from 'mobx'
-
 import ServerLayer from '../TransportLayer'
 
 /**
@@ -7,15 +5,12 @@ import ServerLayer from '../TransportLayer'
  * Maintains session information
  */
 class AppStore {
-  @observable currentUserId = null
-
   constructor (TransportLayer) {
     this.TransportLayer = TransportLayer || new ServerLayer()
   }
 
   get asJSON () {
-    return {
-    }
+    return {}
   }
 }
 

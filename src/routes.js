@@ -1,4 +1,4 @@
-import App from './components/pages/App'
+import App from './components/wrapper/App'
 import Landing from './components/pages/Landing'
 
 export default function () {

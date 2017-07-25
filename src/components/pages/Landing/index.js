@@ -6,7 +6,7 @@ import { observer } from 'mobx-react'
 class Landing extends Component {
   render () {
     return (
-      <DocumentTitle title="TeachOK | Learn something new">
+      <DocumentTitle title="Welcome to paradise">
         <div>Testing this out on Landing</div>
       </DocumentTitle>
     )

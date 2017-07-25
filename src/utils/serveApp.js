@@ -2,7 +2,7 @@ import React from 'react'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 
-import Html from '../components/pages/Html'
+import Html from '../components/wrapper/Html'
 
 /*
  * serveApp

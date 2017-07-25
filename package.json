@@ -14,7 +14,6 @@
     "coverage": "npm run test-server --coverage && npm run test-components --coverage",
     "test": "npm run test-server && npm run test-components && npm run lint",
     "dev": "concurrently --kill-others \"nodemon src --watch\" \"node webpack/webpack-dev-server\"",
-    "storybook": "start-storybook -p 6006 -s src/public -c src/stories",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles -u 1 src/public/* src/public/**/* src/public/**/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
@@ -126,7 +125,6 @@
     "react-addons-test-utils": "^15.4.2",
     "react-hot-loader": "3.0.0-beta.6",
     "run-sequence": "^1.2.2",
-    "serve-static": "^1.12.0",
-    "storybook-addon-specifications": "^1.0.15"
+    "serve-static": "^1.12.0"
   }
 }
