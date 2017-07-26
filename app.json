@@ -1,28 +1,9 @@
 {
-  "name": "TeachOK",
-  "description": "Learn anything",
+  "name": "Paradise",
+  "description": "Welcome to Paradise. React made easy.",
   "scripts": {
   },
-  "env": {
-    "AWS_ACCESS_KEY_ID": {
-      "required": true
-    },
-    "AWS_SECRET_ACCESS_KEY": {
-      "required": true
-    },
-    "MONGODB_URI": {
-      "required": true
-    },
-    "S3_BUCKET": {
-      "required": true
-    },
-    "SENDGRID_API_KEY": {
-      "required": true
-    },
-    "STRIPE_SK": {
-      "required": true
-    }
-  },
+  "env": {},
   "environments": {
     "test": {
       "scripts": {
@@ -30,18 +11,8 @@
       }
     }
   },
-  "formation": {
-  },
-  "addons": [
-    {
-      "plan": "mongolab:sandbox",
-      "as": "MONGODB"
-    },
-    {
-      "plan": "sendgrid:bronze",
-      "as": "SENDGRID"
-    }
-  ],
+  "formation": {},
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"

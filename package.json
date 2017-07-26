@@ -9,28 +9,26 @@
   "scripts": {
     "start": "node .",
     "lint": "eslint src",
-    "test-components": "cd src/components && cross-env NODE_ENV=test jest",
-    "test-server": "cross-env NODE_ENV=test jest",
     "coverage": "npm run test-server --coverage && npm run test-components --coverage",
-    "test": "npm run test-server && npm run test-components && npm run lint",
+    "test": "cross-env NODE_ENV=test jest",
     "dev": "concurrently --kill-others \"nodemon src --watch\" \"node webpack/webpack-dev-server\"",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles -u 1 src/public/* src/public/**/* src/public/**/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "storybook": "start-storybook -p 6006 -s src/public -c src/stories",
+    "build-storybook": "build-storybook"
   },
   "jest": {
-    "modulePathIgnorePatterns": [
-      "<rootDir>/src/components"
-    ],
     "moduleDirectories": [
       "src",
       "node_modules"
     ],
-    "testEnvironment": "node"
+    "testEnvironment": "jsdom"
   },
   "dependencies": {
+    "@storybook/addon-knobs": "^3.1.9",
     "aws-sdk": "^2.22.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.23.0",
@@ -77,8 +75,9 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
+    "prop-types": "^15.5.10",
     "rc-slider": "^6.2.0",
-    "react": "^15.4.2",
+    "react": "^15.6.1",
     "react-addons-update": "^15.4.2",
     "react-avatar-editor": "^8.0.1",
     "react-document-title": "^2.0.2",
@@ -91,6 +90,7 @@
     "react-scroll": "^1.4.8",
     "react-sortable": "^1.2.0",
     "react-tap-event-plugin": "^2.0.1",
+    "react-test-renderer": "^15.6.1",
     "react-textarea-autosize": "^4.0.5",
     "react-waypoint": "^5.2.1",
     "rimraf": "^2.6.1",
@@ -105,13 +105,14 @@
     "webpack-md5-hash": "^0.0.5"
   },
   "devDependencies": {
+    "@storybook/react": "^3.1.9",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^19.0.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
     "connect": "^3.6.0",
     "del": "^2.2.2",
-    "enzyme": "^2.7.1",
+    "enzyme": "^2.9.1",
     "eslint": "^3.16.1",
     "eslint-config-standard": "^7.0.0",
     "eslint-loader": "^1.6.3",
