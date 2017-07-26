@@ -18,4 +18,5 @@ const renderApp = () => (
     )}
   />
 )
+
 ReactDOM.render(renderApp(), mountNode)
