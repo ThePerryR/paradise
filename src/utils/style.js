@@ -5,10 +5,9 @@ export const colors = {
   black: '#3c3c3c',
   primary: '#1c3dcf'
 }
+export const createColorStyleFromProps = ({color} = {}) => `color: ${color || colors.black};`
+const text = styled.div`${createColorStyleFromProps}`
 
-const text = styled.div`
-  ${props => `color: ${props.color || colors.black};`}
-`
 text.propsTypes = {
   children: PropTypes.node.isRequired,
   color: PropTypes.string

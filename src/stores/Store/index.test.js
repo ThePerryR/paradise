@@ -19,10 +19,15 @@ class MockClass {
     }
   }
 }
+
 const items = [{_id: 1, name: 'foo'}, {_id: 2, name: 'bar'}]
 const parentStore = {}
 const store = new Store(items, MockClass, parentStore)
 
+test('Can create a store with no items', () => {
+  const store = new Store()
+  expect(store.items).toHaveLength(0)
+})
 test('Initializes with items', () => {
   expect(store.items.length).toBe(2)
   store.items.forEach((item, i) => {
@@ -45,7 +50,7 @@ test('.get returns query if ID is passed in', () => {
 })
 
 test('.get returns query if array of IDs are passed in', () => {
-  const results = store.get(['1', '2'])
+  const results = store.get(['1', '2', 'fakeID'])
   expect(results[0]).toBe(store.items[0])
   expect(results[1]).toBe(store.items[1])
 })
@@ -54,6 +59,9 @@ test('.get returns query if key/value query is passed in', () => {
   expect(store.get({name: 'bar'})[0]).toBe(store.items[1])
 })
 
+test('updateItemFromServer returns if nothing is passed in', () => {
+  expect(store.updateItemFromServer()).toBe(undefined)
+})
 test('updateItemFromServer adds new items', () => {
   store.updateItemFromServer({_id: 3, name: 'hello'})
   expect(store.items.length).toBe(3)
@@ -77,6 +85,7 @@ test('updateItems updates each one', () => {
 })
 
 test('remove item removes an item', () => {
+  store.removeItem('notRealID')
   store.removeItem('2')
   store.removeItem(3)
   expect(store.items.length).toBe(2)
