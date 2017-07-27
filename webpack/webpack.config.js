@@ -30,7 +30,7 @@ const config = {
   },
   // ...and move it to our dist/public folder
   output: {
-    path: path.join(__dirname, '../dist/public'),
+    path: path.join(__dirname, '../src/public'),
     filename: '[name].[hash].js',
     publicPath: DEBUG ? `http://${ip}:${port}/` : PUBLIC_PATH
   },

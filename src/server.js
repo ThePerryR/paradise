@@ -21,7 +21,7 @@ app.listen(app.get('port'), () => console.log(`Serving from http://0.0.0.0:${app
 
 /* Serve Static Content */
 app.use(favicon(path.join(__dirname, './public', 'favicon.ico')))
-app.use(express.static(path.join(__dirname, '../dist/public')))
+app.use(express.static(path.join(__dirname, './public')))
 
 /* Logging Middleware */
 app.use(logger('dev'))
