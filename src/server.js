@@ -7,6 +7,7 @@ import morgan from 'morgan'
 import path from 'path'
 import favicon from 'serve-favicon'
 
+import getSignedS3Url from './utils/getSignedS3Url'
 import serveApp from './utils/serveApp'
 
 dotenv.config()
@@ -33,6 +34,7 @@ app.use(helmet())
 app.use(bodyParser.json())
 app.use(cookieParser())
 
+app.get('/sign-s3', getSignedS3Url)
 app.get('*', serveApp)
 
 export default app
