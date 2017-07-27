@@ -1,8 +1,8 @@
 {
-  "name": "TeachOK",
+  "name": "Paradise",
   "version": "0.0.10",
-  "repository": "https://github.com/ThePerryR/alge.git",
-  "author": "perry@teachok.com",
+  "repository": "https://github.com/ThePerryR/paradise.git",
+  "author": "Perry Ratcliff",
   "private": true,
   "main": "src",
   "license": "MIT",
@@ -67,7 +67,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-standard": "^2.1.1",
-    "jest-cli": "^19.0.2",
+    "jest-cli": "^20.0.4",
     "mkdirp": "^0.5.1"
   }
 }

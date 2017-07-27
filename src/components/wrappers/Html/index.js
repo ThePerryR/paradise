@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 const Html = ({assets}) => {
@@ -21,6 +22,12 @@ const Html = ({assets}) => {
     </body>
     </html>
   )
+}
+
+Html.propTypes = {
+  assets: PropTypes.shape({
+    javascript: PropTypes.object.isRequired
+  }).isRequired
 }
 
 export default Html

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { type, colors, createColorStyleFromProps } from './style'
+import { type, colors, createColorStyleFromProps } from './'
 
 test('type components display with proper color', () => {
   const title = shallow(<type.title color="red">Hello World</type.title>)

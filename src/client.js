@@ -12,10 +12,11 @@ const mountNode = document.getElementById('app')
 const renderApp = () => (
   <Router
     history={browserHistory}
-    routes={routes(store.currentUser)}
+    routes={routes()}
     createElement={(Component, props) => (
       <Component store={store} {...props} />
     )}
   />
 )
+
 ReactDOM.render(renderApp(), mountNode)

@@ -3,7 +3,7 @@ import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import express from 'express'
 import helmet from 'helmet'
-import logger from 'morgan'
+import morgan from 'morgan'
 import path from 'path'
 import favicon from 'serve-favicon'
 
@@ -24,7 +24,7 @@ app.use(favicon(path.join(__dirname, './public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, './public')))
 
 /* Logging Middleware */
-app.use(logger('dev'))
+app.use(morgan('dev'))
 
 /* Security Middleware */
 app.use(helmet())
