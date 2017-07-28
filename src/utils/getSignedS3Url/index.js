@@ -1,8 +1,7 @@
 import aws from 'aws-sdk'
 
 export default (req, res) => {
-  console.log(req.query)
-  const S3_BUCKET = process.env.S3_BUCKET
+  const S3_BUCKET = req.query.bucket
   const s3 = new aws.S3()
   const fileName = req.query['file-name']
   const fileType = req.query['file-type']
@@ -26,7 +25,3 @@ export default (req, res) => {
     res.end()
   })
 }
-
-// need to have a way for the storybook hit this up.
-// Probably will make the mock a util
-// export const mock = ().....

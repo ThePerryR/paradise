@@ -1,14 +1,34 @@
-import React from 'react'
-import Dropzone from 'react-dropzone'
+import React, { Component } from 'react'
 
-import uploadFilesToS3 from '../../../utils/uploadFilesToS3'
+import DropAndUpload from '../../wrappers/DropAndUpload'
 
-const Upload = () => (
-  <div>
-    <Dropzone onDrop={(files) => uploadFilesToS3(files, (urls) => console.log(urls))}>
-      <div>Drop Here</div>
-    </Dropzone>
-  </div>
-)
+class Upload extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      loading: false,
+      urls: []
+    }
+  }
+
+  render () {
+    return (
+      <div>
+        <DropAndUpload
+          bucket="paradisejs"
+          onStartUpload={() => this.setState({loading: true})}
+          onSuccessfulUpload={urls => this.setState({loading: false, urls: [...this.state.urls, ...urls]})}
+          onFailedUpload={() => this.setState({loading: false})}>
+          <div>Drop Here or Click Me</div>
+        </DropAndUpload>
+        {this.state.loading && <div>Loading...</div>}
+        <div>Successful Urls:</div>
+        {this.state.urls.map((url) => (
+          <div key={url}>{url}</div>
+        ))}
+      </div>
+    )
+  }
+}
 
 export default Upload

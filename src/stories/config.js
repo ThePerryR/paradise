@@ -1,7 +1,17 @@
 import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
+import mock from 'xhr-mock'
 
 function loadStories () {
+  mock.setup()
+  mock.get(/\/sign-s3\?file-name=(.*)&file-type=(.*)&bucket=(.*)/, (req, res) => {
+    console.log(11111)
+    return res
+      .status(req.query().bucket !== 'fake-bucket' ? 200 : 500)
+      .body(JSON.stringify({signedRequest: 'http://amazon.com', url: req.query()['file-name']}))
+  })
+
+  mock.put('http://amazon.com', (req, res) => res.status(200))
   require('./')
 }
 

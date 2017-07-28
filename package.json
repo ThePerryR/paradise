@@ -21,7 +21,8 @@
       "src",
       "node_modules"
     ],
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "setupTestFrameworkScriptFile": "./src/utils/testSetup"
   },
   "dependencies": {
     "@storybook/addon-knobs": "^3.1.9",
