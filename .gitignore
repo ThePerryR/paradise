@@ -5,6 +5,7 @@ npm-debug.log
 .idea
 .DS_Store
 **/.DS_Store
+.env
 webpack/webpack-assets.json
 src/public/app.*.js
 src/public/vendor.*.js
