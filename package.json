@@ -46,6 +46,7 @@
     "morgan": "^1.8.1",
     "node-uuid": "^1.4.7",
     "prop-types": "^15.5.10",
+    "query-string": "^5.0.0",
     "react": "^15.6.1",
     "react-document-title": "^2.0.2",
     "react-dom": "^15.4.2",
@@ -59,8 +60,7 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
     "webpack-isomorphic-tools": "^3.0.0",
-    "webpack-md5-hash": "^0.0.5",
-    "xhr-mock": "^1.9.0"
+    "webpack-md5-hash": "^0.0.5"
   },
   "devDependencies": {
     "@storybook/react": "^3.1.9",

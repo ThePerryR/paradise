@@ -4,9 +4,7 @@ export default function (file, bucket) {
       return reject(new Error('Please provide a valid file and S3 bucket'))
     }
     const xhr = new XMLHttpRequest()
-    xhr.open('GET', `/sign-s3?file-name=${Date.now() + (Math.floor(Math.random() * 100) + 1)}&file-type=${file.type}&bucket=${bucket}`)
     xhr.onreadystatechange = () => {
-      console.log(xhr.readyState)
       if (xhr.readyState === 4) {
         if (xhr.status !== 200) {
           return reject(new Error('Could not get signed URL.'))
@@ -15,6 +13,7 @@ export default function (file, bucket) {
         resolve(JSON.parse(xhr.responseText))
       }
     }
+    xhr.open('GET', `/sign-s3?file-name=${Date.now() + (Math.floor(Math.random() * 100) + 1)}&file-type=${file.type}&bucket=${bucket}`)
     xhr.send()
   })
 }

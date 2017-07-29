@@ -4,17 +4,10 @@ import Dropzone from 'react-dropzone'
 
 import DropAndUpload from './'
 
-jest.useFakeTimers()
-
-const onStartMock = jest.runAllTimers
-let onSuccessMock = () => {}
-const successPromise = new Promise((resolve) => {
-  onSuccessMock = (urls) => {
-    resolve(urls)
-  }
-})
+const onBeginMock = jest.fn()
+const onStartMock = jest.fn()
+const onSuccessMock = jest.fn()
 const onFailMock = jest.fn()
-
 global.window.URL = {
   createObjectURL: function createObjectURL (arg) {
     return 'data://' + arg.name
@@ -25,9 +18,11 @@ const files = [
   new File([''], 'filename.txt', {type: 'text/plain', lastModified: new Date()}),
   new File([''], 'filename.txt', {type: 'text/plain', lastModified: new Date()})
 ]
+
 const wrapper = mount(
   <DropAndUpload
     bucket="paradisejs"
+    onBeginUpload={onBeginMock}
     onStartUpload={onStartMock}
     onSuccessfulUpload={onSuccessMock}
     onFailedUpload={onFailMock}>
@@ -38,10 +33,12 @@ const wrapper = mount(
 test('Displays its children', () => {
   expect(wrapper.text()).toBe('Hello world')
 })
-test.only('Allows dragging and dropping files', () => {
-  expect.assertions(1)
+test('Allows dragging and dropping files with defaults', () => {
+  const wrapper = mount(
+    <DropAndUpload bucket="paradisejs" onSuccessfulUpload={onSuccessMock} onFailedUpload={onFailMock}>
+      <div>Test</div>
+    </DropAndUpload>
+  )
   wrapper.find(Dropzone).simulate('dragEnter', {dataTransfer: {items: files}})
   wrapper.find(Dropzone).simulate('drop', {dataTransfer: {files}})
-  jest.runAllTimers()
-  return successPromise.then((urls) => expect(urls).toHaveLength(2))
 })
