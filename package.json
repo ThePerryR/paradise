@@ -60,7 +60,8 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
     "webpack-isomorphic-tools": "^3.0.0",
-    "webpack-md5-hash": "^0.0.5"
+    "webpack-md5-hash": "^0.0.5",
+    "xhr-mock": "^1.9.0"
   },
   "devDependencies": {
     "@storybook/react": "^3.1.9",
